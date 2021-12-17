@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+    <form method="post">
+        <input type="text" name="text" placeholder="Name Surname" />
+        <button type="submit">Add</button>
+    </form>
+    <table>
+        {{#candidates}}
+            <tr>
+                <td>{{id}}</td>
+                <td>-</td>
+                <td>{{name}}</td>
+            </tr>
+        {{/candidates}}
+    </table>
+</body>
+</html>
