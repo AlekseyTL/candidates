@@ -1,7 +1,7 @@
-package logic.service;
+package org.example.logic.service;
 
-import logic.repository.Candidate;
-import logic.repository.CandidatesRepository;
+import org.example.logic.repository.Candidate;
+import org.example.logic.repository.CandidatesRepository;
 
 import java.util.Map;
 
