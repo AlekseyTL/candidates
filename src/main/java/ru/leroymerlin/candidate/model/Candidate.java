@@ -1,4 +1,4 @@
-package org.example.model;
+package ru.leroymerlin.candidate.model;
 
 public class Candidate {
     private int id;
@@ -23,5 +23,12 @@ public class Candidate {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Candidate " +
+                "id=" + id +
+                ", name='" + name;
     }
 }

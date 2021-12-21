@@ -1,6 +1,6 @@
-package org.example.repository;
+package ru.leroymerlin.candidate.repository;
 
-import org.example.model.Candidate;
+import ru.leroymerlin.candidate.model.Candidate;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
