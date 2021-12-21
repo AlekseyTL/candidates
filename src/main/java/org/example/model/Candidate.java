@@ -1,4 +1,4 @@
-package org.example.logic.repository;
+package org.example.model;
 
 public class Candidate {
     private int id;
