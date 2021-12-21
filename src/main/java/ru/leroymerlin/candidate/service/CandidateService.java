@@ -6,31 +6,34 @@ import ru.leroymerlin.candidate.model.Candidate;
 import ru.leroymerlin.candidate.repository.CandidateRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class CandidateService {
     private final CandidateRepository candidatesRepository;
 
-    public void add(String text) {
+    public Candidate create(String name, String surname) {
         int randNum = (int)(Math.random() * 1e6);
-        Candidate candidate = new Candidate(randNum, text);
+        Candidate candidate = new Candidate(randNum, name, surname);
         candidatesRepository.getCandidates().add(candidate);
+        return candidate;
     }
 
-    public void update(String id, String text) {
+    public void update(String id, String name, String surname) {
         for (Candidate candidate : candidatesRepository.getCandidates()) {
             if (candidate.getId() == Integer.parseInt(id)) {
-                candidate.setName(text);
+                candidate.setName(name);
+                candidate.setSurname(surname);
             }
-        }
-        for (Candidate c : candidatesRepository.getCandidates()) {
-            System.out.println("---" + c + " ||== " + id + " == " + text);
         }
     }
 
-    public Candidate getUser(String id) {
+    public List<Candidate> getCandidates() {
+        return candidatesRepository.getCandidates();
+    }
+
+    public Candidate getCandidate(String id) {
         return candidatesRepository.getCandidates().stream()
                 .filter(user -> Integer.parseInt(id) == user.getId())
                 .findFirst()

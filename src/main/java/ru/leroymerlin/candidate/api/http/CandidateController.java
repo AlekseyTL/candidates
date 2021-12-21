@@ -2,38 +2,36 @@ package ru.leroymerlin.candidate.api.http;
 
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.leroymerlin.candidate.api.http.dto.CandidateParams;
 import ru.leroymerlin.candidate.model.Candidate;
-import ru.leroymerlin.candidate.repository.CandidateRepository;
 import ru.leroymerlin.candidate.service.CandidateService;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/v1")
+@RequestMapping("/v1/candidate")
 public class CandidateController {
     private final CandidateService candidatesService;
-    private final CandidateRepository candidateRepository;
 
     @GetMapping()
-    public ArrayList<Candidate> main() {
-        return candidateRepository.getCandidates();
+    public List<Candidate> getCandidates() {
+        return candidatesService.getCandidates();
     }
 
     @GetMapping("/{id}")
-    public Candidate getUser(@PathVariable String id) {
-        return candidatesService.getUser(id);
+    public Candidate getCandidate(@PathVariable String id) {
+        return candidatesService.getCandidate(id);
     }
 
     @PostMapping
-    public ArrayList<Candidate> create(@RequestBody String text) {
-        candidatesService.add(text);
-        return candidateRepository.getCandidates();
+    public Candidate create(@RequestBody CandidateParams candidate) {
+        return candidatesService.create(candidate.getName(), candidate.getSurname());
     }
 
     @PutMapping("/{id}")
-    public ArrayList<Candidate> update(@PathVariable String id, @RequestBody String text) {
-        candidatesService.update(id, text);
-        return candidateRepository.getCandidates();
+    public Candidate update(@PathVariable String id, @RequestBody CandidateParams candidate) {
+        candidatesService.update(id, candidate.getName(), candidate.getSurname());
+        return candidatesService.getCandidate(id);
     }
 }

@@ -4,12 +4,13 @@ import ru.leroymerlin.candidate.model.Candidate;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class CandidateRepository {
-    private final ArrayList<Candidate> candidates = new ArrayList<>();
+    private final List<Candidate> candidates = new ArrayList<>();
 
-    public ArrayList<Candidate> getCandidates() {
+    public List<Candidate> getCandidates() {
         return candidates;
     }
 }

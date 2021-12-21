@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/v1/template")
+@RequestMapping("/v1/templates")
 public class TemplateController {
 
 }
